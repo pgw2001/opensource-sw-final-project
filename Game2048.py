@@ -42,11 +42,14 @@ st.markdown(
 def initialize_board():
     board = np.zeros((4, 4), dtype=int)
     for _ in range(2):
-        x, y = np.random.randint(0, 4, size=2)
-        while board[x, y] != 0:
-            x, y = np.random.randint(0, 4, size=2)
-        board[x, y] = 2
+        add_random_tile(board)
     return board
+
+def add_random_tile(board):
+    empty_positions = list(zip(*np.where(board == 0)) )
+    if empty_positions:
+        x, y = empty_positions[np.random.choice(len(empty_positions))]
+        board[x, y] = np.random.choice([2, 4], p=[0.9, 0.1])  # 90% 확률로 2, 10% 확률로 4
 
 # 게임 보드 그리기
 def draw_board(board):
@@ -61,7 +64,6 @@ def draw_board(board):
 def move_board(board, direction):
     if direction == "up":
         for j in range(4):
-            # 각 열에 대해 위로 이동
             non_zero = [board[i][j] for i in range(4) if board[i][j] != 0]
             merged = []
             skip = False
@@ -74,14 +76,12 @@ def move_board(board, direction):
                     skip = True
                 else:
                     merged.append(non_zero[i])
-            # 0으로 채우기
             merged += [0] * (4 - len(merged))
             for i in range(4):
                 board[i][j] = merged[i]
     
     elif direction == "down":
         for j in range(4):
-            # 각 열에 대해 아래로 이동
             non_zero = [board[i][j] for i in range(4) if board[i][j] != 0]
             merged = []
             skip = False
@@ -94,14 +94,12 @@ def move_board(board, direction):
                     skip = True
                 else:
                     merged.append(non_zero[i])
-            # 0으로 채우기
             merged += [0] * (4 - len(merged))
             for i in range(4):
                 board[3 - i][j] = merged[i]
     
     elif direction == "left":
         for i in range(4):
-            # 각 행에 대해 왼쪽으로 이동
             non_zero = [board[i][j] for j in range(4) if board[i][j] != 0]
             merged = []
             skip = False
@@ -114,14 +112,12 @@ def move_board(board, direction):
                     skip = True
                 else:
                     merged.append(non_zero[j])
-            # 0으로 채우기
             merged += [0] * (4 - len(merged))
             for j in range(4):
                 board[i][j] = merged[j]
     
     elif direction == "right":
         for i in range(4):
-            # 각 행에 대해 오른쪽으로 이동
             non_zero = [board[i][j] for j in range(4) if board[i][j] != 0]
             merged = []
             skip = False
@@ -134,7 +130,6 @@ def move_board(board, direction):
                     skip = True
                 else:
                     merged.append(non_zero[j])
-            # 0으로 채우기
             merged += [0] * (4 - len(merged))
             for j in range(4):
                 board[i][3 - j] = merged[j]
@@ -146,26 +141,27 @@ st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
 
-# 보드 그리기
-draw_board(st.session_state.board)
-
 # 버튼을 통한 방향 이동
 col1, col2, col3 = st.columns(3)
 with col2:
     if st.button("↑"):
         st.session_state.board = move_board(st.session_state.board, "up")
+        add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
     with col1:
         if st.button("←"):
             st.session_state.board = move_board(st.session_state.board, "left")
+            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
     with col3:
         if st.button("→"):
             st.session_state.board = move_board(st.session_state.board, "right")
+            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
     if st.button("↓"):
         st.session_state.board = move_board(st.session_state.board, "down")
+        add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
 
 if st.button("리셋"):
     st.session_state.board = initialize_board()
     st.write("게임이 리셋되었습니다.")
 
-# 보드 다시 그리기
+# 보드 그리기
 draw_board(st.session_state.board)
