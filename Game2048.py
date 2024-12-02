@@ -34,6 +34,22 @@ st.markdown(
     .cell-512 { background-color: #edc850; }
     .cell-1024 { background-color: #edc53f; }
     .cell-2048 { background-color: #edc22e; }
+
+    .stHorizontalBlock {
+        gap: 0rem;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .st-emotion-cache-12w0qpk{
+        width:100px;
+        flex:none;
+    }
+    .st-emotion-cache-1r6slb0{
+        width:60px;
+        flex:none;
+    }
+    
     </style>
     """, unsafe_allow_html=True
 )
@@ -141,23 +157,6 @@ st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
 
-# 버튼을 통한 방향 이동
-col1, col2, col3 = st.columns(3)
-with col2:
-    if st.button("↑"):
-        st.session_state.board = move_board(st.session_state.board, "up")
-        add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
-    with col1:
-        if st.button("←"):
-            st.session_state.board = move_board(st.session_state.board, "left")
-            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
-    with col3:
-        if st.button("→"):
-            st.session_state.board = move_board(st.session_state.board, "right")
-            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
-    if st.button("↓"):
-        st.session_state.board = move_board(st.session_state.board, "down")
-        add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
 
 if st.button("리셋"):
     st.session_state.board = initialize_board()
@@ -165,3 +164,24 @@ if st.button("리셋"):
 
 # 보드 그리기
 draw_board(st.session_state.board)
+
+with st.container():
+        col1, col2, col3 = st.columns(3)
+        with col2:
+         if st.button("↑"):
+                st.session_state.board = move_board(st.session_state.board, "up")
+                add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+with st.container():
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            if st.button("←"):
+                st.session_state.board = move_board(st.session_state.board, "left")
+                add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+        with col2:
+            if st.button("↓"):
+                st.session_state.board = move_board(st.session_state.board, "down")
+                add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+        with col3:
+            if st.button("→"):
+                st.session_state.board = move_board(st.session_state.board, "right")
+                add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
