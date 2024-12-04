@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
 
+st.set_page_config(page_title="2048", page_icon="🖥")
+
 # CSS 스타일 정의
 st.markdown(
     """
