@@ -51,7 +51,16 @@ st.markdown(
         width:60px;
         flex:none;
     }
+
+    .st-key-up{
+        position:fixed;
+        margin-top: 450px;
+    }
     
+    .st-key-down{
+        position:fixed;
+        margin-top: 500px;
+    }
     </style>
     """, unsafe_allow_html=True
 )
@@ -163,13 +172,13 @@ if st.button("리셋"):
     st.session_state.board = initialize_board()
     st.write("게임이 리셋되었습니다.")
 
-with st.container():
+with st.container(key="up"):
         col1, col2, col3 = st.columns(3)
         with col2:
          if st.button("↑"):
                 st.session_state.board = move_board(st.session_state.board, "up")
                 add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
-with st.container():
+with st.container(key="down"):
         col1, col2, col3 = st.columns(3)
         with col1:
             if st.button("←"):
