@@ -60,10 +60,14 @@ st.markdown(
     .st-key-down{
         position:absolute;
         margin-top: 500px;
-
-    .st-key-chat_1{
-        width:400px;
     }
+
+    .st-key-chat{
+        position:absolute;
+        margin-left:130%;
+        margin-top:-70%;
+    }
+
     </style>
     """, unsafe_allow_html=True
 )
@@ -167,7 +171,6 @@ def move_board(board, direction):
     return board
 
 # 스트림릿 앱
-
 st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
@@ -175,8 +178,7 @@ if 'board' not in st.session_state:
 if st.button("리셋"):
     st.session_state.board = initialize_board()
     st.write("게임이 리셋되었습니다.")
-with st.container(key="chat_1"):
-    js_test.draw_chat()
+
 with st.container(key="up"):
         col1, col2, col3 = st.columns(3)
         with col2:
@@ -200,3 +202,6 @@ with st.container(key="down"):
 
 # 보드 그리기
 draw_board(st.session_state.board)
+
+with st.container(key="chat"):
+    js_test.draw_chat()
