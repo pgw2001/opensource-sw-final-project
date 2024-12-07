@@ -66,9 +66,9 @@ st.markdown(
     }
 
     .st-key-chat{
-        position:absolute;
-        margin-left:130%;
-        margin-top:-70%;
+        position:fixed;
+        margin-left:50vw;
+        margin-top:-40vh;
     }
 
     </style>
