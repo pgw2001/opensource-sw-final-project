@@ -68,10 +68,13 @@ st.markdown(
         width: 400px;
     }
 
-    .st-key-chat{
+    .st-key-chat {
         position: fixed;
-        margin-left: 40vw;
-        margin-top: -60vh;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+        width: 400px;
+        z-index: 10;
     }
 
     </style>
