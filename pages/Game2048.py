@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import js_test
+from module import js_test
 st.set_page_config(page_title="2048", page_icon="🖥")
 
 # CSS 스타일 정의
