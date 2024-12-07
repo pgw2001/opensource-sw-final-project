@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-
+import js_test
 st.set_page_config(page_title="2048", page_icon="🖥")
 
 # CSS 스타일 정의
@@ -53,14 +53,21 @@ st.markdown(
     }
 
     .st-key-up{
-        position:fixed;
+        position:absolute;
         margin-top: 450px;
     }
     
     .st-key-down{
-        position:fixed;
+        position:absolute;
         margin-top: 500px;
     }
+
+    .st-key-chat{
+        position:absolute;
+        margin-left:130%;
+        margin-top:-70%;
+    }
+
     </style>
     """, unsafe_allow_html=True
 )
@@ -195,3 +202,6 @@ with st.container(key="down"):
 
 # 보드 그리기
 draw_board(st.session_state.board)
+
+with st.container(key="chat"):
+    js_test.draw_chat()
