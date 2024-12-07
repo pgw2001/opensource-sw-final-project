@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Turorial",
-    page_icon="👋",
+    page_icon="🎮",
 )
 
 st.write("# 오픈소스SW의이해 8조 기말 프로젝트")
