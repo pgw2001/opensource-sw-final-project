@@ -62,6 +62,9 @@ st.markdown(
     .st-key-down{
         position: absolute;
         margin-top: 500px;
+
+    .st-key-chat_1{
+        width:400px;
     }
 
     .st-key-chat_1{
@@ -180,7 +183,6 @@ def move_board(board, direction):
     return board
 
 # 스트림릿 앱
-
 st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
