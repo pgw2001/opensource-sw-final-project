@@ -180,7 +180,6 @@ def move_board(board, direction):
     return board
 
 # 스트림릿 앱
-
 st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
