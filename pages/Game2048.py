@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-
+import js_test
 st.set_page_config(page_title="2048", page_icon="🖥")
 
 # CSS 스타일 정의
@@ -51,7 +51,26 @@ st.markdown(
         width:60px;
         flex:none;
     }
+
+    .st-key-up{
+        position:absolute;
+        margin-top: 450px;
+    }
     
+    .st-key-down{
+        position:absolute;
+        margin-top: 500px;
+
+    .st-key-chat_1{
+        width:400px;
+    }
+
+    .st-key-chat{
+        position:absolute;
+        margin-left:130%;
+        margin-top:-70%;
+    }
+
     </style>
     """, unsafe_allow_html=True
 )
@@ -155,25 +174,23 @@ def move_board(board, direction):
     return board
 
 # 스트림릿 앱
+
 st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
 
-
 if st.button("리셋"):
     st.session_state.board = initialize_board()
     st.write("게임이 리셋되었습니다.")
-
-# 보드 그리기
-draw_board(st.session_state.board)
-
-with st.container():
+with st.container(key="chat_1"):
+    js_test.draw_chat()
+with st.container(key="up"):
         col1, col2, col3 = st.columns(3)
         with col2:
          if st.button("↑"):
                 st.session_state.board = move_board(st.session_state.board, "up")
                 add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
-with st.container():
+with st.container(key="down"):
         col1, col2, col3 = st.columns(3)
         with col1:
             if st.button("←"):
@@ -187,3 +204,9 @@ with st.container():
             if st.button("→"):
                 st.session_state.board = move_board(st.session_state.board, "right")
                 add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+
+# 보드 그리기
+draw_board(st.session_state.board)
+
+with st.container(key="chat"):
+    js_test.draw_chat()
