@@ -182,8 +182,6 @@ if 'board' not in st.session_state:
 if st.button("리셋"):
     st.session_state.board = initialize_board()
     st.write("게임이 리셋되었습니다.")
-with st.container(key="chat_1"):
-    js_test.draw_chat()
 with st.container(key="up"):
         col1, col2, col3 = st.columns(3)
         with col2:
