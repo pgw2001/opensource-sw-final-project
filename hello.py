@@ -1,28 +1,36 @@
 import streamlit as st
+import streamlit.components.v1 as components
+import streamlit_authenticator as stauth
+import yaml
+with open('config.yaml') as file:
+        config = yaml.load(file, Loader=stauth.SafeLoader)
 
 st.set_page_config(
     page_title="Hello",
     page_icon="👋",
 )
 
-st.write("# Welcome to Streamlit! 👋")
-
-st.sidebar.success("Select a demo above.")
-
-st.markdown(
-    """
-    Streamlit is an open-source app framework built specifically for
-    Machine Learning and Data Science projects.
-    **👈 Select a demo from the sidebar** to see some examples
-    of what Streamlit can do!
-    ### Want to learn more?
-    - Check out [streamlit.io](https://streamlit.io)
-    - Jump into our [documentation](https://docs.streamlit.io)
-    - Ask a question in our [community
-        forums](https://discuss.streamlit.io)
-    ### See more complex demos
-    - Use a neural net to [analyze the Udacity Self-driving Car Image
-        Dataset](https://github.com/streamlit/demo-self-driving)
-    - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-"""
+## yaml 파일 데이터로 객체 생성
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
 )
+## 로그인 위젯 렌더링
+## log(in/out)(로그인 위젯 문구, 버튼 위치)
+## 버튼 위치 = "main" or "sidebar"
+name, authentication_status, username = authenticator.login('main')
+
+# authentication_status : 인증 상태 (실패=>False, 값없음=>None, 성공=>True)
+if st.session_state["authentication_status"] == False:
+    st.error("Username/password is incorrect")
+
+if st.session_state["authentication_status"] == None:
+    st.warning("Please enter your username and password")
+
+if st.session_state["authentication_status"]:
+    authenticator.logout('Logout',"sidebar")
+    st.sidebar.title(f"Welcome {name}")
+    ## 로그인 후 기능들 작성 ##
