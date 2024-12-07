@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 from module import js_test
+
 st.set_page_config(page_title="2048", page_icon="🖥")
 
 # CSS 스타일 정의
@@ -44,31 +45,39 @@ st.markdown(
     }
 
     .st-emotion-cache-12w0qpk{
-        width:100px;
-        flex:none;
+        width: 100px;
+        flex: none;
     }
+
     .st-emotion-cache-1r6slb0{
-        width:60px;
-        flex:none;
+        width: 60px;
+        flex: none;
     }
 
     .st-key-up{
-        position:absolute;
+        position: absolute;
         margin-top: 450px;
     }
     
     .st-key-down{
-        position:absolute;
+        position: absolute;
         margin-top: 500px;
 
     .st-key-chat_1{
         width:400px;
     }
 
-    .st-key-chat{
-        position:fixed;
-        margin-left:50vw;
-        margin-top:-40vh;
+    .st-key-chat_1{
+        width: 400px;
+    }
+
+    .st-key-chat {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+        width: 400px;
+        z-index: 10;
     }
 
     </style>
@@ -174,7 +183,6 @@ def move_board(board, direction):
     return board
 
 # 스트림릿 앱
-
 st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
@@ -182,29 +190,33 @@ if 'board' not in st.session_state:
 if st.button("리셋"):
     st.session_state.board = initialize_board()
     st.write("게임이 리셋되었습니다.")
+
+# 게임 조작 버튼
 with st.container(key="up"):
-        col1, col2, col3 = st.columns(3)
-        with col2:
-         if st.button("↑"):
-                st.session_state.board = move_board(st.session_state.board, "up")
-                add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+    col1, col2, col3 = st.columns(3)
+    with col2:
+        if st.button("↑"):
+            st.session_state.board = move_board(st.session_state.board, "up")
+            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+
 with st.container(key="down"):
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            if st.button("←"):
-                st.session_state.board = move_board(st.session_state.board, "left")
-                add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
-        with col2:
-            if st.button("↓"):
-                st.session_state.board = move_board(st.session_state.board, "down")
-                add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
-        with col3:
-            if st.button("→"):
-                st.session_state.board = move_board(st.session_state.board, "right")
-                add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("←"):
+            st.session_state.board = move_board(st.session_state.board, "left")
+            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+    with col2:
+        if st.button("↓"):
+            st.session_state.board = move_board(st.session_state.board, "down")
+            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+    with col3:
+        if st.button("→"):
+            st.session_state.board = move_board(st.session_state.board, "right")
+            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
 
 # 보드 그리기
 draw_board(st.session_state.board)
 
+# 채팅창 하나만 존재하도록 수정
 with st.container(key="chat"):
     js_test.draw_chat()
