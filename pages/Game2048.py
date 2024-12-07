@@ -64,6 +64,13 @@ st.markdown(
     .st-key-chat_1{
         width:400px;
     }
+
+    .st-key-chat{
+        position:absolute;
+        margin-left:130%;
+        margin-top:-70%;
+    }
+
     </style>
     """, unsafe_allow_html=True
 )
@@ -200,3 +207,6 @@ with st.container(key="down"):
 
 # 보드 그리기
 draw_board(st.session_state.board)
+
+with st.container(key="chat"):
+    js_test.draw_chat()
