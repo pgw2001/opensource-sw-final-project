@@ -182,6 +182,10 @@ st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
 
+# 점수 표시
+score = calculate_score(st.session_state.board)
+st.write(f"**점수:** {score}")
+
 if st.button("리셋"):
     st.session_state.board = initialize_board()
     st.write("게임이 리셋되었습니다.")
@@ -217,4 +221,3 @@ draw_board(st.session_state.board)
 # 게임 오버 메시지
 if is_game_over(st.session_state.board):
     st.error("게임 오버! 더 이상 이동할 수 없습니다.")
-
