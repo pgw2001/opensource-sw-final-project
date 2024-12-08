@@ -32,6 +32,20 @@ st.markdown(
         flex-wrap: wrap;
         justify-content: center;
     }
+    .st-emotion-cache-ocqkz7{
+        gap:0rem;
+    }
+    .st-emotion-cache-ytkq5y{
+        flex:none;
+        width: calc(9% - 1rem);
+    }
+    .st-emotion-cache-1r6slb0{
+        flex:none;
+        width: 50px;
+    }
+    .st-emotion-cache-1ic3z3m{ 
+        gap:0rem;
+    }
     </style>
     """, 
     unsafe_allow_html=True
@@ -187,6 +201,8 @@ if "game_started" in st.session_state and not st.session_state.game_started:
 if not st.session_state.game_started:
     st.button("게임 시작", on_click=start_game)
 else:
+    st.button("재시작", on_click=on_button_click)
+    st.text(f"점수: {st.session_state.game_state['score']}")
     current_time = time.time()
     if current_time - st.session_state.game_state["last_update"] >= update_interval:
         st.session_state.game_state["last_update"] = current_time
@@ -213,9 +229,6 @@ else:
     col1, col2, col3 = st.columns(3)
     with col2:
         streamlit_shortcuts.button("↓", on_click=down_callback, shortcut="Shift+S")
-
-    st.button("재시작", on_click=on_button_click)
-    st.text(f"점수: {st.session_state.game_state['score']}")
 
     # 게임이 끝났을 때만 'Game Over' 텍스트 표시
     if st.session_state.game_state["game_over"]:
