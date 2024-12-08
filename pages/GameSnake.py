@@ -3,6 +3,7 @@ import numpy as np
 import time
 import streamlit_shortcuts
 import random
+from module import js_test
 
 # CSS 스타일 정의
 st.markdown(
@@ -168,6 +169,11 @@ def left_callback():
 
 def right_callback():
     return control_snake("→")
+
+# 채팅 생성 파트
+text = st.sidebar.text("채팅")
+with st.sidebar:
+    js_test.draw_chat()
 
 # 게임 조작 방법 설명
 st.title("Snake 게임")

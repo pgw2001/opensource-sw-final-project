@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
+from module import js_test
 
 code = """
 <!DOCTYPE html>
@@ -417,4 +418,9 @@ code = """
 
 """
 
+# 채팅 생성 파트
+text = st.sidebar.text("채팅")
+with st.sidebar:
+    js_test.draw_chat()
+    
 components.html(code,width=1000,height=1000,scrolling=False)

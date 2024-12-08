@@ -1,15 +1,22 @@
 import streamlit as st
 from module import js_test
-st.markdown("""
+
+st.markdown(
+    """
     <style>
-            .st-emotion-cache-1b2ybts{
-                visibility:hidden;
-            }
+    .st-emotion-cache-1b2ybts{
+        visibility:hidden;
+    }
     </style>
-            """,unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True
+)
+
+# 채팅 생성 파트
 text = st.sidebar.text("채팅")
 with st.sidebar:
     js_test.draw_chat()
+
 st.title("내맘대로 추가한 게임들")
 st.header("여러가지 게임을 즐겨보세요")
 st.write("특히 바로 밑에 3개의 게임은 저희가 streamlit으로 직접 만든 눈물과 땀의 결실입니다.")

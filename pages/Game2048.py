@@ -178,6 +178,11 @@ def is_game_over(board):
 def calculate_score(board):
     return np.sum(board)
 
+# 채팅 생성 파트
+text = st.sidebar.text("채팅")
+with st.sidebar:
+    js_test.draw_chat()
+    
 st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
