@@ -16,26 +16,26 @@
   <tbody>
     <tr>
       <td align="center"><a href="https://github.com/pgw2001">
-        <img src="" width="100px;" alt=""/><br/><sub>박건웅</sub></a><br/>
+        <img src="https://github.com/user-attachments/assets/f9657b55-cf05-48ff-83a6-278e87cb28c1" width="100px;" alt=""/><br/><sub>박건웅</sub></a><br/>
       <td>20205164</td>
       <td>문서 작성(요구사항 명세서, WBS)</td>
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/JustHello02">
-        <img src="" width="100px;" alt=""/><br/><sub>엄주성</sub></a><br/>
+        <img src="https://github.com/user-attachments/assets/16c8460c-590a-49f0-80c8-b9270edf86af" width="100px;" alt=""/><br/><sub>박성민</sub></a><br/>
       <td>20215155</td>
       <td>문서 작성(화면 설계서), 발표 자료 준비</td>
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/JooSungEom">
-        <img src="" width="100px;" alt=""/><br/><sub>엄주성</sub></a><br/>
+        <img src="https://github.com/user-attachments/assets/f64efb77-88ab-4aec-8092-090eac52fafb" width="100px;" alt=""/><br/><sub>엄주성</sub></a><br/>
       </td>
       <td>20205202</td>
       <td>게임 개발 감독</td>
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/Jinmiru">
-        <img src="" width="100px;" alt=""/><br/><sub>정진영</sub></a><br/>
+        <img src="https://github.com/user-attachments/assets/c5292883-2903-41d2-a1f1-ace700ab6159" width="100px;" alt=""/><br/><sub>정진영</sub></a><br/>
       </td>
       <td>20205252</td>
       <td>프로젝트 계획 및 GitHub Repository 정리</td>
