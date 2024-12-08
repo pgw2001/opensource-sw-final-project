@@ -62,6 +62,9 @@ st.markdown(
     .st-key-down{
         position: absolute;
         margin-top: 500px;
+
+    .st-key-chat_1{
+        width:400px;
     }
 
     .st-key-chat_1{
