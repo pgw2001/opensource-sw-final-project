@@ -21,55 +21,55 @@ st.markdown(
 )
 
 # 스도쿠 유효성 검사
-def check_valid(board, row, col, num):
+def check_valid(sudokuBoard, row, col, num):
     for c in range(9):
-        if c != col and board[row][c] == num:
+        if c != col and sudokuBoard[row][c] == num:
             return False
     for r in range(9):
-        if r != row and board[r][col] == num:
+        if r != row and sudokuBoard[r][col] == num:
             return False
     box_row, box_col = row // 3 * 3, col // 3 * 3
     for i in range(3):
         for j in range(3):
-            if (box_row + i != row or box_col + j != col) and board[box_row + i][box_col + j] == num:
+            if (box_row + i != row or box_col + j != col) and sudokuBoard[box_row + i][box_col + j] == num:
                 return False
     return True
 
 # 스도쿠 보드 생성
 def create_sudoku_board(difficulty=0.5):
-    board = np.zeros((9, 9), dtype=int)
-    def fill_board(board):
+    sudokuBoard = np.zeros((9, 9), dtype=int)
+    def fill_board(sudokuBoard):
         for row in range(9):
             for col in range(9):
-                if board[row][col] == 0:
+                if sudokuBoard[row][col] == 0:
                     nums = np.random.permutation(range(1, 10))
                     for num in nums:
-                        if check_valid(board, row, col, num):
-                            board[row][col] = num
-                            if fill_board(board):
+                        if check_valid(sudokuBoard, row, col, num):
+                            sudokuBoard[row][col] = num
+                            if fill_board(sudokuBoard):
                                 return True
-                            board[row][col] = 0
+                            sudokuBoard[row][col] = 0
                     return False
         return True
-    fill_board(board)
+    fill_board(sudokuBoard)
     num_to_remove = int(difficulty * 81)
     coords = [(r, c) for r in range(9) for c in range(9)]
     np.random.shuffle(coords)
     for r, c in coords[:num_to_remove]:
-        board[r][c] = 0
-    return board
+        sudokuBoard[r][c] = 0
+    return sudokuBoard
 
 # 오류 위치를 체크하여 틀린 개수 반환하는 함수
-def get_invalid_count(board, original_board):
+def get_invalid_count(sudokuBoard, original_board):
     invalid_positions = set()  # 잘못된 위치를 기록
 
     for i in range(9):
         for j in range(9):
-            if original_board[i, j] == 0 and board[i, j] != 0:  # 입력된 칸만 체크
-                num = board[i, j]
+            if original_board[i, j] == 0 and sudokuBoard[i, j] != 0:  # 입력된 칸만 체크
+                num = sudokuBoard[i, j]
 
                 # 해당 숫자가 유효하지 않으면 위치를 추가
-                if not check_valid(board, i, j, num):
+                if not check_valid(sudokuBoard, i, j, num):
                     invalid_positions.add((i, j))
 
     return len(invalid_positions)
@@ -96,9 +96,9 @@ def main():
     st.write("각 행, 열, 3x3 박스에 1-9 숫자가 중복되지 않도록 채워주세요!")
 
     # 게임 초기화
-    if 'board' not in st.session_state:
-        st.session_state.board = create_sudoku_board()
-        st.session_state.original_board = st.session_state.board.copy()
+    if 'sudokuBoard' not in st.session_state:
+        st.session_state.sudokuBoard = create_sudoku_board()
+        st.session_state.original_board = st.session_state.sudokuBoard.copy()
         st.session_state.invalid_positions = []
         st.session_state.start_time = time.time()
 
@@ -112,18 +112,18 @@ def main():
     col1, col2 = st.columns(2)
     with col1:
         if st.button("새 게임"):
-            st.session_state.board = create_sudoku_board(difficulty)
-            st.session_state.original_board = st.session_state.board.copy()
+            st.session_state.sudokuBoard = create_sudoku_board(difficulty)
+            st.session_state.original_board = st.session_state.sudokuBoard.copy()
             st.session_state.invalid_positions = []
             st.session_state.start_time = time.time()
     with col2:
         if st.button("난이도 적용"):
-            st.session_state.board = create_sudoku_board(difficulty)
-            st.session_state.original_board = st.session_state.board.copy()
+            st.session_state.sudokuBoard = create_sudoku_board(difficulty)
+            st.session_state.original_board = st.session_state.sudokuBoard.copy()
             st.session_state.invalid_positions = []
             st.session_state.start_time = time.time()
 
-    board = st.session_state.board
+    sudokuBoard = st.session_state.sudokuBoard
     original_board = st.session_state.original_board
 
     # 보드 표시
@@ -143,22 +143,22 @@ def main():
             else:
                 input_value = cols[j].text_input(
                     f"cell_{i}_{j}",
-                    value=str(board[i, j]) if board[i, j] != 0 else '',
+                    value=str(sudokuBoard[i, j]) if sudokuBoard[i, j] != 0 else '',
                     max_chars=1,
                     label_visibility='collapsed',
                     key=f'input_{i}_{j}'
                 )
                 if input_value.isdigit() and 1 <= int(input_value) <= 9:
-                    board[i, j] = int(input_value)
+                    sudokuBoard[i, j] = int(input_value)
                 else:
-                    board[i, j] = 0
+                    sudokuBoard[i, j] = 0
 
     if st.button("제출"):
         # 정답과 비교하여 틀린 개수 계산 (사용자 입력값만 체크)
-        invalid_count = get_invalid_count(board, original_board)
+        invalid_count = get_invalid_count(sudokuBoard, original_board)
 
         # 게임이 클리어된 경우
-        if np.all(board != 0) and invalid_count == 0:
+        if np.all(sudokuBoard != 0) and invalid_count == 0:
             elapsed_time = time.time() - st.session_state.start_time
             st.success(f"축하합니다! 스도쿠를 완성했습니다! 걸린 시간: {elapsed_time:.2f}초")
 
@@ -180,7 +180,7 @@ def main():
             else:
                 st.warning("🙌 더 나아질 수 있어요!")
         else:
-            if np.all(board != 0):
+            if np.all(sudokuBoard != 0):
                 st.warning(f"📝 게임을 클리어하려면 모든 답을 정확히 입력해야 합니다. 틀린 답이 {invalid_count}개 있습니다.")
             else:
                 st.warning("📝 아직 모든 칸을 채우지 않았습니다.")
