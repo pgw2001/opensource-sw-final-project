@@ -1,6 +1,25 @@
 import streamlit as st
 import numpy as np
 import time
+from module import js_test
+
+st.set_page_config(page_title="Sudoku Game", page_icon="🧩", layout="centered")
+
+# CSS 스타일 정의
+st.markdown(
+    """
+    <style>
+    .st-key-chat {
+        position: fixed;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 300px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # 스도쿠 유효성 검사
 def check_valid(board, row, col, num):
@@ -74,7 +93,6 @@ def calculate_score(difficulty, elapsed_time):
 
 # 메인 함수
 def main():
-    st.set_page_config(page_title="Sudoku Game", page_icon="🧩", layout="centered")
     st.title("🧩 스도쿠 게임")
     st.write("각 행, 열, 3x3 박스에 1-9 숫자가 중복되지 않도록 채워주세요!")
 
@@ -167,6 +185,10 @@ def main():
                 st.warning(f"📝 게임을 클리어하려면 모든 답을 정확히 입력해야 합니다. 틀린 답이 {invalid_count}개 있습니다.")
             else:
                 st.warning("📝 아직 모든 칸을 채우지 않았습니다.")
+
+    # 채팅창 추가
+    with st.container(key="chat"):
+        js_test.draw_chat()
 
 if __name__ == "__main__":
     main()
