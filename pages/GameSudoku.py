@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import time
-from module import js_test
 
 st.set_page_config(page_title="Sudoku Game", page_icon="🧩", layout="centered")
 
@@ -185,10 +184,6 @@ def main():
                 st.warning(f"📝 게임을 클리어하려면 모든 답을 정확히 입력해야 합니다. 틀린 답이 {invalid_count}개 있습니다.")
             else:
                 st.warning("📝 아직 모든 칸을 채우지 않았습니다.")
-
-    # 채팅창 추가
-    with st.container(key="chat"):
-        js_test.draw_chat()
 
 if __name__ == "__main__":
     main()
