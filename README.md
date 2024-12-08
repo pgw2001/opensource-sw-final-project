@@ -69,7 +69,9 @@
 
 
 ## 4. 플레이 화면(Streamlit) 🎮
-(추가 예정)
+<img width="1280" alt="플레이 화면 1" src="https://github.com/user-attachments/assets/aedbce9b-77d6-43e3-8a71-7c9987794e48">
+<img width="1280" alt="플레이 화면 2" src="https://github.com/user-attachments/assets/f18707b2-112b-4310-9efd-6fd2c20997fa">
+<img width="1280" alt="플레이 화면 3" src="https://github.com/user-attachments/assets/42a4fed7-2f9c-46de-b266-00ebeef2f450">
 <br><br>
 
 
