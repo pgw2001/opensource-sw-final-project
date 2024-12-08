@@ -62,7 +62,7 @@
 2. 성공적으로 로딩완료 시, 튜토리얼(게임소개) 화면으로 이동
 3. 원하는 게임을 사이드바에서 선택하면, 해당 게임 페이지로 이동
 4. 플레이 방법
-    - 키보드 입력은 단축키 가능
+    - 게임 종류에 따라 **일반 이동키(화살 키) 또는 단축키**로 진행 (추천)
     - 마우스 클릭으로만 진행 가능
 <br>
 
@@ -74,6 +74,50 @@
 
 
 
-## 5. Requirements.txt 📰
-(추가 예정)
+## 5. requirements.txt 📰
+```
+altair==5.5.0
+attrs==24.2.0
+blinker==1.9.0
+cachetools==5.5.0
+certifi==2024.8.30
+charset-normalizer==3.4.0
+click==8.1.7
+colorama==0.4.6
+gitdb==4.0.11
+GitPython==3.1.43
+idna==3.10
+Jinja2==3.1.4
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
+markdown-it-py==3.0.0
+MarkupSafe==3.0.2
+mdurl==0.1.2
+narwhals==1.16.0
+numpy==2.1.3
+packaging==24.2
+pandas==2.2.3
+pillow==11.0.0
+protobuf==5.29.1
+pyarrow==18.1.0
+pydeck==0.9.1
+Pygments==2.18.0
+python-dateutil==2.9.0.post0
+pytz==2024.2
+referencing==0.35.1
+requests==2.32.3
+rich==13.9.4
+rpds-py==0.22.3
+six==1.17.0
+smmap==5.0.1
+streamlit==1.40.2
+streamlit-shortcuts==0.1.9
+tenacity==9.0.0
+toml==0.10.2
+tornado==6.4.2
+typing_extensions==4.12.2
+tzdata==2024.2
+urllib3==2.2.3
+watchdog==6.0.0
+```
 <br><br>
