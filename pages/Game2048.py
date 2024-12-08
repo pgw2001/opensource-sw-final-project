@@ -61,17 +61,7 @@ st.markdown(
     .st-key-down{
         position:absolute;
         margin-top: 500px;
-
-    .st-key-chat_1{
-        width:400px;
     }
-
-    .st-key-chat{
-        position:fixed;
-        margin-left:50vw;
-        margin-top:-40vh;
-    }
-
     </style>
     """, unsafe_allow_html=True
 )
@@ -199,6 +189,10 @@ st.write(f"**점수:** {score}")
 if st.button("리셋"):
     st.session_state.board = initialize_board()
     st.write("게임이 리셋되었습니다.")
+
+with st.container(key="score"):
+    score = calculate_score(st.session_state.board)
+    st.write(f"**점수:** {score}")
 
 with st.container(key="up"):
     col1, col2, col3 = st.columns(3)
