@@ -4,6 +4,39 @@ import time
 import streamlit_shortcuts
 import random
 
+# CSS 스타일 정의
+st.markdown(
+    """
+    <style>
+    .square-button {
+        height: 40px;
+        width: 40px;
+        border-radius: 0px;
+        padding: 0;
+        margin: 0;
+        font-size: 20px;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        background-color: #f0f0f0;
+    }
+    .snake-button {
+        background-color: #32CD32;  /* Snake 칸에 초록색 배경 */
+        color: white;
+    }
+    .food-button {
+        color: white;
+    }
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    </style>
+    """, 
+    unsafe_allow_html=True
+)
+
 # 그리드 크기
 rows = 10
 cols = 10
@@ -75,39 +108,6 @@ def render_grid():
     snake = st.session_state.game_state["snake"]
     food = st.session_state.game_state["food"]
     fruit = st.session_state.game_state["fruit"]
-
-    # 정사각형 스타일을 적용할 수 있도록 CSS 삽입
-    st.markdown(
-        """
-        <style>
-        .square-button {
-            height: 40px;
-            width: 40px;
-            border-radius: 0px;
-            padding: 0;
-            margin: 0;
-            font-size: 20px;
-            text-align: center;
-            display: inline-block;
-            cursor: pointer;
-            background-color: #f0f0f0;
-        }
-        .snake-button {
-            background-color: #32CD32;  /* Snake 칸에 초록색 배경 */
-            color: white;
-        }
-        .food-button {
-            color: white;
-        }
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        </style>
-        """, 
-        unsafe_allow_html=True
-    )
 
     # 그리드를 생성하여 버튼을 HTML로 표시
     for row in range(rows):
