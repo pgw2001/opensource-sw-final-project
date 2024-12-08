@@ -47,7 +47,7 @@ st.markdown(
         width: 50px;
     }
 
-    .st-emotion-cache-1ic3z3m{
+    .st-emotion-cache-1ic3z3m{ 
         gap:0rem;
     }
     </style>
