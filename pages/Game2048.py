@@ -45,33 +45,31 @@ st.markdown(
     }
 
     .st-emotion-cache-12w0qpk{
-        width: 100px;
-        flex: none;
+        width:100px;
+        flex:none;
     }
-
     .st-emotion-cache-1r6slb0{
-        width: 60px;
-        flex: none;
+        width:60px;
+        flex:none;
     }
 
     .st-key-up{
-        position: absolute;
+        position:absolute;
         margin-top: 450px;
     }
     
     .st-key-down{
-        position: absolute;
+        position:absolute;
         margin-top: 500px;
-    }
 
     .st-key-chat_1{
-        width: 400px;
+        width:400px;
     }
 
     .st-key-chat{
-        position: fixed;
-        margin-left: 40vw;
-        margin-top: -60vh;
+        position:fixed;
+        margin-left:50vw;
+        margin-top:-40vh;
     }
 
     </style>
@@ -86,7 +84,7 @@ def initialize_board():
     return board
 
 def add_random_tile(board):
-    empty_positions = list(zip(*np.where(board == 0)) )
+    empty_positions = list(zip(*np.where(board == 0)))
     if empty_positions:
         x, y = empty_positions[np.random.choice(len(empty_positions))]
         board[x, y] = np.random.choice([2, 4], p=[0.9, 0.1])  # 90% 확률로 2, 10% 확률로 4
@@ -176,7 +174,20 @@ def move_board(board, direction):
 
     return board
 
-# 스트림릿 앱
+# 게임 오버 상태 체크
+def is_game_over(board):
+    if np.any(board == 0):
+        return False
+    for direction in ["up", "down", "left", "right"]:
+        test_board = board.copy()
+        if not np.array_equal(move_board(test_board, direction), board):
+            return False
+    return True
+
+# 점수 계산
+def calculate_score(board):
+    return np.sum(board)
+
 st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()
@@ -185,32 +196,37 @@ if st.button("리셋"):
     st.session_state.board = initialize_board()
     st.write("게임이 리셋되었습니다.")
 
-# 게임 조작 버튼
 with st.container(key="up"):
     col1, col2, col3 = st.columns(3)
     with col2:
         if st.button("↑"):
             st.session_state.board = move_board(st.session_state.board, "up")
-            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+            add_random_tile(st.session_state.board)
 
 with st.container(key="down"):
     col1, col2, col3 = st.columns(3)
     with col1:
         if st.button("←"):
             st.session_state.board = move_board(st.session_state.board, "left")
-            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+            add_random_tile(st.session_state.board)
     with col2:
         if st.button("↓"):
             st.session_state.board = move_board(st.session_state.board, "down")
-            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+            add_random_tile(st.session_state.board)
     with col3:
         if st.button("→"):
             st.session_state.board = move_board(st.session_state.board, "right")
-            add_random_tile(st.session_state.board)  # 이동 후 랜덤 타일 추가
+            add_random_tile(st.session_state.board)
 
-# 보드 그리기
 draw_board(st.session_state.board)
 
-# 채팅창 하나만 존재하도록 수정
+# 점수 표시
+score = calculate_score(st.session_state.board)
+st.write(f"**점수:** {score}")
+
+# 게임 오버 메시지
+if is_game_over(st.session_state.board):
+    st.error("게임 오버! 더 이상 이동할 수 없습니다.")
+
 with st.container(key="chat"):
     js_test.draw_chat()
