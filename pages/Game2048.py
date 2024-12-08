@@ -220,4 +220,4 @@ draw_board(st.session_state.board)
 
 # 게임 오버 메시지
 if is_game_over(st.session_state.board):
-    st.error("게임 오버! 더 이상 이동할 수 없습니다.") 
+    st.error("게임 오버! 더 이상 이동할 수 없습니다.")
