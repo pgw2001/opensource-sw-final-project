@@ -123,7 +123,7 @@ def update_snake():
         snake.pop()
 
 def render_grid():
-    snake = st.session_state.game_state["snake"]
+    snake = st.session_state.game_state["snake"] 
     food = st.session_state.game_state["food"]
     fruit = st.session_state.game_state["fruit"]
 
