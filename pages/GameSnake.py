@@ -222,6 +222,7 @@ else:
     # 단축키를 이용한 조작 설정
     with st.container():
         col1, col2, col3 = st.columns(3)
+
         with col2:
             streamlit_shortcuts.button("↑", on_click=up_callback, shortcut="Shift+W")
             
@@ -233,6 +234,7 @@ else:
         streamlit_shortcuts.button("↓", on_click=down_callback, shortcut="Shift+S")
     with col3:
             streamlit_shortcuts.button("→", on_click=right_callback, shortcut="Shift+D")
+
 
     # 게임이 끝났을 때만 'Game Over' 텍스트 표시
     if st.session_state.game_state["game_over"]:
