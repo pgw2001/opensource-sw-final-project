@@ -58,12 +58,12 @@
 
 
 ## 3. 사용방법 🎮
-1. Streamlit 링크로 이동 - (추가 예정)
+1. Streamlit 링크로 이동 - https://opensource-sw-final-project-h27sngpsyhlayqbyxbhytu.streamlit.app/
 2. 성공적으로 로딩완료 시, 튜토리얼(게임소개) 화면으로 이동
 3. 원하는 게임을 사이드바에서 선택하면, 해당 게임 페이지로 이동
 4. 플레이 방법
     - 게임 종류에 따라 **일반 이동키(화살 키) 또는 단축키**로 진행 (추천)
-    - 마우스 클릭으로만 진행 가능
+    - 마우스 클릭으로 진행
 <br>
 
 
