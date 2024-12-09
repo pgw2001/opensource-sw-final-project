@@ -28,7 +28,7 @@ with con1 :
     st.write("특히 바로 밑에 3개의 게임은 저희가 streamlit으로 직접 만든 눈물과 땀의 결실입니다.")
     st.write("streamlit으로 게임 만들지 마세요")
     st.logo(
-        "images\logo.png",
+        image="images\logo.png",
         size="large"
 
         )
