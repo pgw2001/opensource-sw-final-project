@@ -2,7 +2,8 @@ import streamlit as st
 import streamlit.components.v1 as components
 from module import js_test
 from module import weather
-
+from module import clock
+st.set_page_config(page_title="크롬다이노", page_icon="images\game6.png",)
 code = """
 <html>
 
@@ -2638,10 +2639,14 @@ html[subframe] body {
 </html>
 """
 #사이드 바 위젯
+text = st.sidebar.text("채팅")
 with st.sidebar:
-    st.write("채팅")
     js_test.draw_chat()
-    weather.draw_weather()
+    col1, col2 = st.columns(2)
+    with col1:
+        weather.draw_weather()
+    with col2:
+        clock.draw_clock()
 
   
 st.title("크롬다이노")

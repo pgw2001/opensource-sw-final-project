@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
-import module
+from module import js_test
+from module import weather
+from module import clock
 
 st.set_page_config(page_title="2048", page_icon="🖥")
 
@@ -178,12 +180,15 @@ def is_game_over(board):
 def calculate_score(board):
     return np.sum(board)
 
-
 #사이드 바 위젯
+text = st.sidebar.text("채팅")
 with st.sidebar:
-    st.write("채팅")
-    module.js_test.draw_chat()
-    module.weather.draw_weather()
+    js_test.draw_chat()
+    col1, col2 = st.columns(2)
+    with col1:
+        weather.draw_weather()
+    with col2:
+        clock.draw_clock()
 
 st.title("2048 게임")
 if 'board' not in st.session_state:
