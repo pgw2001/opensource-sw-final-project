@@ -59,7 +59,7 @@
 
 ## 3. 사용방법 🎮
 ### 3-1. 배포용 Stremalit 링크에 접속하는 경우
-1. Streamlit 링크로 이동 - https://opensource-sw-final-project-h27sngpsyhlayqbyxbhytu.streamlit.app/
+1. Streamlit 링크로 이동 - https://opsw8-minigamezip.streamlit.app/
 2. 성공적으로 로딩완료 시, 튜토리얼(게임소개) 화면으로 이동
 3. 원하는 게임을 사이드바에서 선택하면, 해당 게임 페이지로 이동
 4. 플레이 방법
