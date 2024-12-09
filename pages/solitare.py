@@ -4,6 +4,8 @@ from module import weather
 from module import clock
 import streamlit.components.v1 as components
 
+st.set_page_config(page_title="Solitaire", page_icon="images\game8.png")
+
 code = """
 <div>
 <script src="https://cdn.htmlgames.com/embed.js?game=ClassicSolitaire&amp;bgcolor=white"></script>

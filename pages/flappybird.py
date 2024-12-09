@@ -5,6 +5,8 @@ from module import js_test
 from module import weather
 from module import clock
 
+st.set_page_config(page_title="flappybird", page_icon="images\game9.png")
+
 code = """
 <!DOCTYPE html>
 

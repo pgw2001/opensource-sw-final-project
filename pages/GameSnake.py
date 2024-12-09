@@ -7,6 +7,8 @@ from module import js_test
 from module import weather
 from module import clock
 
+st.set_page_config(page_title="Snake", page_icon="images\game3.png")
+
 # CSS 스타일 정의
 st.markdown(
     """

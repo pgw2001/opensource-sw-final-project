@@ -4,6 +4,7 @@ from module import js_test
 from module import weather
 from module import clock
 
+st.set_page_config(page_title="puzzleBobble", page_icon="images\game5.png")
 
 code = """
 <!DOCTYPE html>
