@@ -1,8 +1,10 @@
 import streamlit as st
 import numpy as np
 from module import js_test
+from module import weather
+from module import clock
 
-st.set_page_config(page_title="2048", page_icon="🖥")
+st.set_page_config(page_title="2048", page_icon="images\game1.png")
 
 # CSS 스타일 정의
 st.markdown(
@@ -178,11 +180,16 @@ def is_game_over(board):
 def calculate_score(board):
     return np.sum(board)
 
-# 채팅 생성 파트
+#사이드 바 위젯
 text = st.sidebar.text("채팅")
 with st.sidebar:
     js_test.draw_chat()
-    
+    col1, col2 = st.columns(2)
+    with col1:
+        weather.draw_weather()
+    with col2:
+        clock.draw_clock()
+
 st.title("2048 게임")
 if 'board' not in st.session_state:
     st.session_state.board = initialize_board()

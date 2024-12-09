@@ -1,6 +1,10 @@
 import streamlit as st
 import streamlit.components.v1 as components
 from module import js_test
+from module import weather
+from module import clock
+
+st.set_page_config(page_title="Tetris", page_icon="images\game4.png")
 
 code = """
 <!DOCTYPE html>
@@ -415,12 +419,18 @@ code = """
     </script>
   </body>
 </html>
-
 """
-
-# 채팅 생성 파트
+#사이드 바 위젯
 text = st.sidebar.text("채팅")
 with st.sidebar:
     js_test.draw_chat()
-    
+    col1, col2 = st.columns(2)
+    with col1:
+        weather.draw_weather()
+    with col2:
+        clock.draw_clock()
+st.title("테트리스")
 components.html(code,width=1000,height=1000,scrolling=False)
+st.write("출처 : https://yongj.in/development/html-games/")
+st.write("저희의 기술 부족으로 방향키 위, 아래를 누르면 스크롤이 됩니다.")
+st.write("그러니 shift+방향키로 게임을 플레이해주세요")
