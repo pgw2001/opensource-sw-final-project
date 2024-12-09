@@ -1,6 +1,7 @@
 import streamlit as st
 from module import js_test
 from module import weather
+st.set_page_config(page_title="미니게임 수용소",page_icon="images\icon.png")
 st.markdown("""
 
     <style>
@@ -9,16 +10,19 @@ st.markdown("""
     }
     </style>
  """,unsafe_allow_html=True)
-
 text = st.sidebar.text("채팅")
 with st.sidebar:
     js_test.draw_chat()
     weather.draw_weather()
-st.title("내맘대로 추가한 게임들")
+st.image('images/title.png')
 st.header("여러가지 게임을 즐겨보세요")
 st.write("특히 바로 밑에 3개의 게임은 저희가 streamlit으로 직접 만든 눈물과 땀의 결실입니다.")
 st.write("streamlit으로 게임 만들지 마세요")
+st.logo(
+    "images\logo.png",
+    size="large"
 
+    )
 with st.container():
     col1, col2, col3 = st.columns(3)
     with col1:
