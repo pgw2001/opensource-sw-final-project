@@ -859,3 +859,4 @@ with st.sidebar:
         clock.draw_clock()
 
 components.html(code, width=800, height=600)
+st.write("출처 : https://gist.github.com/straker")

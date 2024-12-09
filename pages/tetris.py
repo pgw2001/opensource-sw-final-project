@@ -431,3 +431,4 @@ with st.sidebar:
         clock.draw_clock()
     
 components.html(code,width=1000,height=1000,scrolling=False)
+st.write("출처 : https://yongj.in/development/html-games/")

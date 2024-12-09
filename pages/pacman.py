@@ -1357,3 +1357,4 @@ with st.sidebar:
 
 st.title("팩맨")
 components.html(code,width=800,height=600)
+st.write("출처 : https://gist.github.com/onnayokheng/fd2ca1a74d9d427ff7461745afccac88")

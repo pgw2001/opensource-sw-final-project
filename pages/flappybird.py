@@ -277,3 +277,4 @@ with st.sidebar:
     
 st.title("플래피버드")
 components.html(code,width=800,height=1000)
+st.write("출처: https://jellyho.com/blog/112/")
