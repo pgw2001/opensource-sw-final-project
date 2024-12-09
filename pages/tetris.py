@@ -4,7 +4,7 @@ from module import js_test
 from module import weather
 from module import clock
 
-st.set_page_config(page_title="Tetris", page_icon="images\game4.png")
+st.set_page_config(page_title="Tetris", page_icon="https://github.com/user-attachments/assets/c0d76497-32a4-4a65-8390-5bd8c8763189")
 
 code = """
 <!DOCTYPE html>

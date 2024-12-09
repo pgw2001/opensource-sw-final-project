@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 from module import js_test
 from module import weather
 from module import clock
-st.set_page_config(page_title="크롬다이노", page_icon="images\game6.png",)
+st.set_page_config(page_title="크롬다이노", page_icon="https://github.com/user-attachments/assets/cf4f4e96-96bf-464f-b8fd-70655d75c2e6",)
 code = """
 <html>
 
