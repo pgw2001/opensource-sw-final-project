@@ -5,7 +5,7 @@ from module import js_test
 from module import weather
 from module import clock
 
-st.set_page_config(page_title="flappybird", page_icon="images\game9.png")
+st.set_page_config(page_title="flappybird", page_icon="https://github.com/user-attachments/assets/4b378b92-5273-410a-8018-2c499fc780ef")
 
 code = """
 <!DOCTYPE html>

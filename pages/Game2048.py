@@ -4,7 +4,7 @@ from module import js_test
 from module import weather
 from module import clock
 
-st.set_page_config(page_title="2048", page_icon="images\game1.png")
+st.set_page_config(page_title="2048", page_icon="https://github.com/user-attachments/assets/0e8b1c35-af45-475a-aca7-d27d2fdc40a0")
 
 # CSS 스타일 정의
 st.markdown(

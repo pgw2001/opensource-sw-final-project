@@ -4,7 +4,7 @@ from module import weather
 from module import clock
 import streamlit.components.v1 as components
 
-st.set_page_config(page_title="Solitaire", page_icon="images\game8.png")
+st.set_page_config(page_title="Solitaire", page_icon="https://github.com/user-attachments/assets/9c9ac912-b34d-44ae-8534-1450ce481c21")
 
 code = """
 <div>
