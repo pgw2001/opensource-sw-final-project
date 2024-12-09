@@ -857,6 +857,6 @@ with st.sidebar:
         weather.draw_weather()
     with col2:
         clock.draw_clock()
-
+st.title("퍼즐보블")
 components.html(code, width=800, height=600)
 st.write("출처 : https://gist.github.com/straker")

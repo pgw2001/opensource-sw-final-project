@@ -429,6 +429,8 @@ with st.sidebar:
         weather.draw_weather()
     with col2:
         clock.draw_clock()
-    
+st.title("테트리스")
 components.html(code,width=1000,height=1000,scrolling=False)
 st.write("출처 : https://yongj.in/development/html-games/")
+st.write("저희의 기술 부족으로 방향키 위, 아래를 누르면 스크롤이 됩니다.")
+st.write("그러니 shift+방향키로 게임을 플레이해주세요")
