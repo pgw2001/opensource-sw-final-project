@@ -2,12 +2,13 @@ import streamlit as st
 from module import js_test
 from module import weather
 st.markdown("""
+
     <style>
-            .st-emotion-cache-1b2ybts{
-                visibility:hidden;
-            }
+    .st-emotion-cache-1b2ybts{
+        visibility:hidden;
+    }
     </style>
-            """,unsafe_allow_html=True)
+ """,unsafe_allow_html=True)
 
 text = st.sidebar.text("채팅")
 with st.sidebar:

@@ -4,6 +4,7 @@ import time
 from module import js_test
 from module import weather
 
+
 st.set_page_config(page_title="Sudoku Game", page_icon="🧩", layout="centered")
 
 # CSS 스타일 정의
@@ -92,14 +93,13 @@ def calculate_score(difficulty, elapsed_time):
 
     return max(0, final_score)
 
+#사이드 바 위젯
+with st.sidebar:
+    st.write("채팅")
+    js_test.draw_chat()
+    weather.draw_weather()
 # 메인 함수
 def main():
-    #사이드 바 위젯
-    with st.sidebar:
-        st.write("채팅")
-        js_test.draw_chat()
-        weather.draw_weather()
-
     st.title("🧩 스도쿠 게임")
     st.write("각 행, 열, 3x3 박스에 1-9 숫자가 중복되지 않도록 채워주세요!")
 
