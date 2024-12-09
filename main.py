@@ -1,5 +1,6 @@
 import streamlit as st
 from module import js_test
+from module import weather
 st.markdown("""
     <style>
             .st-emotion-cache-1b2ybts{
@@ -7,9 +8,11 @@ st.markdown("""
             }
     </style>
             """,unsafe_allow_html=True)
+
 text = st.sidebar.text("채팅")
 with st.sidebar:
     js_test.draw_chat()
+    weather.draw_weather()
 st.title("내맘대로 추가한 게임들")
 st.header("여러가지 게임을 즐겨보세요")
 st.write("특히 바로 밑에 3개의 게임은 저희가 streamlit으로 직접 만든 눈물과 땀의 결실입니다.")
@@ -42,4 +45,18 @@ with st.container():
     with col3:
         with st.expander(label="크롬다이노", expanded=True,):
             st.image("images\game6.png")
-            st.page_link("pages/GameSnake.py", label="플레이", icon="🦎")
+            st.page_link("pages/chromedino.py", label="플레이", icon="🦎")
+with st.container():
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        with st.expander(label="팩맨", expanded=True,):
+            st.image("images\game7.png")
+            st.page_link("pages/pacman.py", label="플레이", icon="😃")
+    with col2: 
+        with st.expander(label="솔리테어", expanded=True,):
+            st.image("images\game8.png")
+            st.page_link("pages/solitare.py", label="플레이", icon="🃏")
+    with col3:
+        with st.expander(label="플래피버드", expanded=True,):
+            st.image("images\game9.png")
+            st.page_link("pages/flappybird.py", label="플레이", icon="🐣")

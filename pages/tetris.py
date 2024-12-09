@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
-
+from module import js_test
+from module import weather
 code = """
 <!DOCTYPE html>
 <html>
@@ -414,7 +415,11 @@ code = """
     </script>
   </body>
 </html>
-
 """
+#사이드 바 위젯
+with st.sidebar:
+    st.write("채팅")
+    js_test.draw_chat()
+    weather.draw_weather()
 
 components.html(code,width=1000,height=1000,scrolling=False)
