@@ -4,7 +4,7 @@ from module import js_test
 from module import weather
 from module import clock
 
-st.set_page_config(page_title="puzzleBobble", page_icon="images\game5.png")
+st.set_page_config(page_title="puzzleBobble", page_icon="https://github.com/user-attachments/assets/ea77c59b-6196-444c-a5fd-32d278c0484f")
 
 code = """
 <!DOCTYPE html>
